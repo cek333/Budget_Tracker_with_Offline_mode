@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles.css">
 
+  <!-- For PWAs -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Budget Tracker">
+  <meta name="msapplication-TileImage" content="icons/icon-192x192.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+
   <title>Budget Tracker</title>
 </head>
 <body>
@@ -43,5 +53,14 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="index.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js").then(reg => {
+          console.log("We found your service worker file!", reg);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
